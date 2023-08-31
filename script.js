@@ -14,8 +14,9 @@ const currencySelect = document.querySelector("#currency-select")
     const finalValue = document.querySelector("#final-value")
 
 
-    const dollarToday = 4.87    //AQUI ESTÃO DECLARADAS OS VALORES DAS MOEDAS NO DIA
-    const euroToday =   5.32
+    const dollarToday = 4.94    //AQUI ESTÃO DECLARADAS OS VALORES DAS MOEDAS NO DIA
+    const euroToday =   5.35
+    const libraToday = 6.26
 
     //AQUI ESTÃO SENDO TROCADOS OS VALORES NO HTML PELOS NOVOS VALORES. ESSA É A FUNÇÃO DO INNERHTML. NO INICIO ESTÁ O NOME DA CONSTANTE QUE SERÁ MUDADA LA. O NEW... É PARA COLOCAR O TIPO DE MOEDA. O PRIMEIRO É A MOEDA DO BRASIL, O SEGUNDO O DOLAR E O TERCEIRO O EURO.
 
@@ -38,6 +39,14 @@ const currencySelect = document.querySelector("#currency-select")
         }).format(inputCurrency/euroToday)   //AQUI ESTÁ SENDO FEITO O CALCULO E MOSTRANDO NA TELA
 
     }
+
+    if (currencySelect.value == "libra") {
+        finalValue.innerHTML = new Intl.NumberFormat("en-GB", {
+            style: "currency",
+            currency: "GBP"
+        }).format(inputCurrency/libraToday)
+        }
+    
 }
 
 
@@ -59,6 +68,11 @@ function changeCurrency () {
         currencyName.innerHTML = "Euro"
         currencyImg.src = "./assets/img/euro.png"
 
+    }
+
+    if(currencySelect.value == "libra"){
+        currencyName.innerHTML = "Libra"
+        currencyImg.src = "./assets/img/libra.png"
     }
 
     convertValues()   //AQUI ELE COLOCA A PRIMEIRA FUNÇÃO E MODIFICA O VALOR SEMPRE QUE SELECIONADO
